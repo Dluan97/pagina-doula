@@ -93,5 +93,34 @@
     <footer>
       <p>© 2025 Doulagem com Leide Tamile. Todos os direitos reservados.</p>
     </footer>
+
+  <script>
+  const header = document.querySelector('header');
+  const logo = document.querySelector('.logo');
+
+  window.addEventListener('scroll', () => {
+    let scroll = window.scrollY;
+
+    // Define a altura máxima e mínima do padding
+    const maxPadding = 60; // inicial
+    const minPadding = 15; // depois de rolar
+    const maxLogo = 220; // tamanho inicial
+    const minLogo = 120; // tamanho reduzido
+    const scrollLimit = 300; // quanto rolar para atingir o tamanho mínimo
+
+    // Calcular padding proporcional
+    let newPadding = maxPadding - (scroll / scrollLimit) * (maxPadding - minPadding);
+    newPadding = Math.max(minPadding, Math.min(maxPadding, newPadding));
+
+    // Calcular tamanho do logo proporcional
+    let newLogo = maxLogo - (scroll / scrollLimit) * (maxLogo - minLogo);
+    newLogo = Math.max(minLogo, Math.min(maxLogo, newLogo));
+
+    header.style.padding = `${newPadding}px 20px`;
+    logo.style.width = `${newLogo}px`;
+  });
+</script>
+
+
   </body>
 </html>
