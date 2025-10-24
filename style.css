@@ -2,7 +2,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* Corpo */
@@ -16,7 +15,7 @@ body {
 /* Cabeçalho */
 header {
   text-align: center;
-  padding: 60px 20px; /* padding maior inicial */
+  padding: 25px 20px; /* padding maior inicial */
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: sticky;
@@ -59,7 +58,7 @@ nav a:hover {
 
 .hero {
   text-align: center;
-  padding: 120px 20px 80px; /* topo maior para não ser coberto */
+  padding:  80px 20px; /* topo maior para não ser coberto */
   background-color: #f3eadf;
 }
 
