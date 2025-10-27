@@ -1,7 +1,8 @@
-*/* Reset */
+/* Reset */
 * {
-  margin: 0;
+  margin: 1.5;
   padding: 0;
+  box-sizing: border-box; 
 }
 
 /* Corpo */
@@ -10,39 +11,74 @@ body {
   background-color: #f7e8d3;
   color: #333;
   line-height: 1.6;
+
+  /* AJUSTE PARA NÃO COBRIR O CONTEÚDO: 
+     Definimos um valor alto (ex: 200px) para garantir que a Hero Section comece abaixo do cabeçalho grande. 
+     Ajuste este valor se a altura do seu cabeçalho inicial for diferente. */
+  padding-top: 200px; 
 }
 
-/* Cabeçalho */
+/* --- CABEÇALHO (HEADER) --- */
+
 header {
-  text-align: center;
-  padding: 25px 20px; /* padding maior inicial */
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  position: sticky;
+  position: fixed; 
   top: 0;
-  z-index: 10;
-  transition: padding 0.3s ease, background 0.3s ease;
+  left: 0;
+  width: 100%;
+  padding: 25px 5%; /* Padding maior inicial para o estado grande */
+  
+  /* MUDANÇA AQUI: Cabeçalho transparente (inicial) */
+  background: #fff;
+  box-shadow: none; /* Remove sombra no estado transparente */
+  
+  z-index: 1000;
+  transition: all 0.4s ease-in-out; 
+
+  /* Estrutura Flexbox para logo e menu */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 15px; 
 }
 
+/* --- ESTADO ROLADO (Classe 'shrink' adicionada pelo JavaScript) --- */
 header.shrink {
-  padding: 15px 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  height: 80px; 
+  padding: 10px 5%;
+  
+  /* MUDANÇA AQUI: Fundo branco e opaco ao rolar */
+  background-color: #ffffff; 
+  box-shadow: none;
+  backdrop-filter: none; 
+
+  /* Altera a estrutura para colocar logo e menu lado a lado */
+  flex-direction: row; 
+  justify-content: space-between; 
 }
 
+/* --- LOGO --- */
 .logo {
-  width: 220px;
-  transition: width 0.3s ease;
+  width: 200px; /* Tamanho inicial (controlado pelo JS) */
+  transition: width 0.4s ease-in-out;
 }
 
 header.shrink .logo {
-  width: 120px; /* logo reduzida */
+  width: 80px; 
+}
+
+/* --- NAVEGAÇÃO (ÍNDICE) --- */
+nav {
+  flex-grow: 1; 
+  text-align: center;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   gap: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 nav a {
@@ -56,12 +92,13 @@ nav a:hover {
   color: #fdd09b;
 }
 
+/* --- HERO SECTION --- */
 .hero {
+  /* Não precisa de padding-top grande, pois o body já empurrou a seção */
   text-align: center;
-  padding:  80px 20px; /* topo maior para não ser coberto */
-  background-color: #f3eadf;
+  padding: 80px 20px; 
+  background-color: #f3eadf; 
 }
-
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
@@ -90,7 +127,7 @@ nav a:hover {
   background-color: #836a4f;
 }
 
-/* Seções */
+/* --- SEÇÕES --- */
 section {
   padding: 60px 20px;
   text-align: center;
@@ -115,6 +152,9 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card {
@@ -182,4 +222,3 @@ footer {
   color: #777;
   margin-top: 40px;
 }
-

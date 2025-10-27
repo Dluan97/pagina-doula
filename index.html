@@ -13,7 +13,7 @@
   <body>
     <!-- Cabeçalho -->
     <header>
-      <img src="logo2.jpeg" alt="Doulagem com Leide Tamile" class="logo" />
+      <img src="logo2aa.png" alt="Doulagem com Leide Tamile" class="logo" />
       <nav>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
@@ -94,32 +94,31 @@
       <p>© 2025 Doulagem com Leide Tamile. Todos os direitos reservados.</p>
     </footer>
 
-  <script>
-  const header = document.querySelector('header');
-  const logo = document.querySelector('.logo');
+<script>
+const header = document.querySelector('header');
+const logo = document.querySelector('.logo');
 
-  window.addEventListener('scroll', () => {
-    let scroll = window.scrollY;
+window.addEventListener('scroll', () => {
+  let scroll = window.scrollY;
+  const scrollLimit = 80;
+  const scrollTrigger = 80; // Ponto em que a mudança visual começa
 
-    // Define a altura máxima e mínima do padding
-    const maxPadding = 60; // inicial
-    const minPadding = 15; // depois de rolar
-    const maxLogo = 220; // tamanho inicial
-    const minLogo = 120; // tamanho reduzido
-    const scrollLimit = 300; // quanto rolar para atingir o tamanho mínimo
+  // Adiciona a classe 'shrink' quando rolar mais que 50px
+  if(scroll > scrollTrigger) {
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
 
-    // Calcular padding proporcional
-    let newPadding = maxPadding - (scroll / scrollLimit) * (maxPadding - minPadding);
-    newPadding = Math.max(minPadding, Math.min(maxPadding, newPadding));
-
-    // Calcular tamanho do logo proporcional
-    let newLogo = maxLogo - (scroll / scrollLimit) * (maxLogo - minLogo);
-    newLogo = Math.max(minLogo, Math.min(maxLogo, newLogo));
-
-    header.style.padding = `${newPadding}px 20px`;
-    logo.style.width = `${newLogo}px`;
-  });
+  // Reduz tamanho da logo proporcional (opcional, mas recomendado)
+  const maxLogo = 200;
+  const minLogo = 80;
+  let newLogo = maxLogo - (scroll / scrollLimit) * (maxLogo - minLogo);
+  newLogo = Math.max(minLogo, Math.min(maxLogo, newLogo));
+  logo.style.width = `${newLogo}px`;
+});
 </script>
+
 
 
   </body>
