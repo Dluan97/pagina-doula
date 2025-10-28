@@ -13,7 +13,10 @@
   <body>
     <!-- Cabeçalho -->
     <header>
-      <img src="logo2aa.png" alt="Doulagem com Leide Tamile" class="logo" />
+      <a href="index.html">
+        <img src="logo2aa.png" alt="Doulagem com Leide Tamile" class="logo" />
+      </a>
+      
       <nav>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
@@ -67,23 +70,72 @@
     </section>
 
     <!-- Depoimentos -->
-    <section id="depoimentos" class="depoimentos">
-      <h2>Depoimentos</h2>
-      <div class="depoimentos-container">
-        <div class="depoimento">
-          <p>“A presença da Leide fez toda a diferença no meu parto. Me senti acolhida, segura e confiante.”</p>
-          <span>— Mariana R.</span>
+<section id="depoimentos" class="depoimentos">
+    <h2>Experiências Reais</h2>
+    
+    <div class="depoimento-visualizacao">
+        
+        <div class="depoimentos-carrossel">
+            
+            <div class="carrossel-slide active"> 
+                <div class="depoimento-item">
+                    <blockquote>
+                        “A presença da Leide fez toda a diferença no meu parto. Me senti acolhida, segura e confiante.”
+                    </blockquote>
+                    <p class="autor">— Mariana R.</p>
+                </div>
+                <div class="depoimento-item">
+                    <blockquote>
+                        "Um apoio incrível em todos os momentos. Recomendo de coração!”
+                    </blockquote>
+                    <p class="autor">— Ana Luiza P.</p>
+                </div>
+                <div class="depoimento-item">
+                    <blockquote>
+                        “Foi essencial ter a Leide ao meu lado. Sua calma e carinho transformaram a experiência.”
+                    </blockquote>
+                    <p class="autor">— Camila T.</p>
+                </div>
+            </div>
+
+            <div class="carrossel-slide">
+                <div class="depoimento-item">
+                    <blockquote>
+                        “O suporte pós-parto me deu a confiança necessária para a amamentação. A Leide é incrível!”
+                    </blockquote>
+                    <p class="autor">— Juliana B.</p>
+                </div>
+            <button class="prev-btn">❮</button>
+            <button class="next-btn">❯</button>
+            
         </div>
-        <div class="depoimento">
-          <p>“Um apoio incrível em todos os momentos. Recomendo de coração!”</p>
-          <span>— Ana Luiza P.</span>
+        
+        <div class="carrossel-indicadores">
+            <span class="dot active"></span>
+            <span class="dot"></span>
         </div>
-        <div class="depoimento">
-          <p>“Foi essencial ter a Leide ao meu lado. Sua calma e carinho transformaram a experiência.”</p>
-          <span>— Camila T.</span>
-        </div>
-      </div>
-    </section>
+        
+    </div>
+    
+    <div class="novo-depoimento">
+        <h2>Deixe sua Mensagem</h2>
+        <p>Gostaria de compartilhar sua experiência? Preencha o formulário abaixo.</p>
+
+        <form id="depoimentoForm" class="form-depoimento">
+            <div class="form-group">
+                <label for="autorInput">Seu Nome:</label>
+                <input type="text" id="autorInput" required>
+            </div>
+            <div class="form-group">
+                <label for="depoimentoInput">Seu Depoimento (Texto):</label>
+                <textarea id="depoimentoInput" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-primario">Enviar e Visualizar</button>
+            <p id="mensagemFeedback" class="alerta-envio"></p>
+        </form>
+    </div>
+    
+</section>
 
     <!-- Contato -->
     <section id="contato" class="contato">
@@ -97,32 +149,6 @@
       <p>© 2025 Doulagem com Leide Tamile. Todos os direitos reservados.</p>
     </footer>
 
-<script>
-const header = document.querySelector('header');
-const logo = document.querySelector('.logo');
-
-window.addEventListener('scroll', () => {
-  let scroll = window.scrollY;
-  const scrollLimit = 80;
-  const scrollTrigger = 80; // Ponto em que a mudança visual começa
-
-  // Adiciona a classe 'shrink' quando rolar mais que 50px
-  if(scroll > scrollTrigger) {
-    header.classList.add('shrink');
-  } else {
-    header.classList.remove('shrink');
-  }
-
-  // Reduz tamanho da logo proporcional (opcional, mas recomendado)
-  const maxLogo = 200;
-  const minLogo = 80;
-  let newLogo = maxLogo - (scroll / scrollLimit) * (maxLogo - minLogo);
-  newLogo = Math.max(minLogo, Math.min(maxLogo, newLogo));
-  logo.style.width = `${newLogo}px`;
-});
-</script>
-
-
-
+<script src="script.js"></script>
   </body>
 </html>
