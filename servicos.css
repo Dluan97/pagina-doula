@@ -1,0 +1,70 @@
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS PARA PÁGINAS DE SERVIÇO */
+/* Este arquivo deve ser linkado APÓS o style.css */
+/* ========================================= */
+
+.servico-detalhe {
+    /* AJUSTE CRÍTICO: Define o espaço entre o header fixo e o conteúdo.
+       85px deve ser o suficiente para o header encolhido (~80px) não cobrir o título,
+       mantendo o conteúdo bem próximo. */
+    padding-top: 85px; 
+    
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center; 
+    min-height: 80vh; 
+}
+
+/* Garante que o H1 não tenha margem extra no topo */
+.servico-detalhe h1 {
+    margin-top: 0; 
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.servico-detalhe .introducao {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.servico-detalhe section {
+    padding: 30px 0;
+}
+
+.servico-detalhe ul {
+    list-style: none;
+    padding-left: 0; 
+    text-align: center; 
+    width: fit-content; 
+    margin: 0 auto 30px auto;
+}
+
+.servico-detalhe ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px; 
+    text-align: left; 
+}
+
+.servico-detalhe ul li::before {
+    content: "🌿";
+    position: absolute;
+    left: 0;
+    font-size: 0.8em;
+}
+
+.servico-detalhe .btn-whatsapp {
+    margin: 30px auto;
+    display: block;
+    width: fit-content;
+}
+
+/* Remove qualquer padding-top grande do body nas páginas de serviço */
+body {
+    padding-top: 0 !important;
+}
