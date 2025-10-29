@@ -1,6 +1,6 @@
 /* Reset */
 * {
-  margin: 0; /* Alterado de 1.5 para 0, pois 1.5 não é uma unidade de margin válida */
+  margin: 0; 
   padding: 0;
   box-sizing: border-box; 
 }
@@ -23,16 +23,14 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 25px 5%; /* Padding maior inicial para o estado grande */
+  padding: 25px 5%; 
   
-  /* MUDANÇA AQUI: Cabeçalho transparente (inicial) */
   background: #fff;
-  box-shadow: none; /* Remove sombra no estado transparente */
+  box-shadow: none; 
   
   z-index: 1000;
   transition: all 0.4s ease-in-out; 
 
-  /* Estrutura Flexbox para logo e menu */
   display: flex;
   flex-direction: column; 
   align-items: center;
@@ -44,19 +42,17 @@ header.shrink {
   height: 80px; 
   padding: 10px 5%;
   
-  /* MUDANÇA AQUI: Fundo branco e opaco ao rolar */
   background-color: #ffffff; 
   box-shadow: none;
   backdrop-filter: none; 
 
-  /* Altera a estrutura para colocar logo e menu lado a lado */
   flex-direction: row; 
   justify-content: space-between; 
 }
 
 /* --- LOGO --- */
 .logo {
-  width: 200px; /* Tamanho inicial (controlado pelo JS) */
+  width: 200px; 
   transition: width 0.4s ease-in-out;
 }
 
@@ -92,7 +88,6 @@ nav a:hover {
 
 /* --- HERO SECTION --- */
 .hero {
-  /* Não precisa de padding-top grande, pois o body já empurrou a seção */
   text-align: center;
   padding: 80px 20px; 
   background-color: #f3eadf; 
@@ -147,7 +142,6 @@ h2 {
 /* Serviços */
 
 .cards {
-  
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -187,29 +181,29 @@ h2 {
 .depoimento-visualizacao {
     max-width: 1000px;
     margin: 10px auto;
-    overflow: hidden; /* CRUCIAL: Esconde slides que estão fora da tela */
-    position: relative; /* Para posicionar botões e slides */
+    overflow: hidden; 
+    position: relative; 
 }
 
 /* O Carrossel em si - Contém todos os slides */
 .depoimentos-carrossel {
-    display: flex; /* Alinha os slides horizontalmente */
-    transition: transform 0.6s ease-in-out; /* Transição de movimento suave */
+    display: flex; 
+    transition: transform 0.6s ease-in-out; 
     position: relative;
-    width: 100%; /* Inicialmente, ocupa 100% da visualização */
+    width: 100%; 
 }
 
 /* Cada grupo de 3 depoimentos */
 .carrossel-slide {
     display: flex;
-    flex-shrink: 0; /* Impede que os slides diminuam */
-    width: 100%; /* Cada slide ocupa a largura total do container */
+    flex-shrink: 0; 
+    width: 100%; 
 }
 
 /* Cada caixa de depoimento individual */
 .depoimento-item {
-    flex: 1; /* Ocupa 1/3 do espaço dentro do carrossel-slide */
-    min-width: 30%; /* Garante que 3 caibam */
+    flex: 1; 
+    min-width: 30%; 
     padding: 20px;
     margin: 0 10px;
     text-align: center;
@@ -233,53 +227,20 @@ h2 {
     display: block;
 }
 
-/* --- Botões de Navegação (Seta Mais Clean) --- */
-.prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9); 
-    color: #c69f86; 
-    border: 1px solid #c69f86;
-    padding: 8px 12px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%; 
-    font-size: 1.2rem;
-    line-height: 1; 
-    transition: background 0.3s, color 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background: #c69f86;
-    color: white;
-}
-
-.prev-btn {
-    left: 20px;
-}
-
-.next-btn {
-    right: 20px;
-}
-
-/* --- Indicadores --- */
+/* --- Indicadores (Dots) --- */
 .carrossel-indicadores {
     text-align: center;
     margin-top: 20px;
 }
 
-/* Estilo do dot (ponto) omitido, assumindo que você já o tenha */
-
 /* --- Botão "Deixar um Recado" (Centralizar) --- */
 .feedback-btn-container {
-    text-align: center; /* Centraliza o botão */
+    text-align: center; 
     margin-top: 30px;
     margin-bottom: 20px;
 }
 
-/* Estilo do botão - Use a classe de seu botão primário */
+/* Estilo do botão primário */
 .btn-primario { 
     padding: 12px 30px;
     background-color: #c69f86; 
@@ -293,7 +254,7 @@ h2 {
 }
 
 .btn-primario:hover {
-    background-color: #a3816c; /* Cor mais escura no hover */
+    background-color: #a3816c; 
 }
 
 
@@ -322,7 +283,7 @@ h2 {
     max-width: 400px;
 }
 
-.form-depoimento .form-group { /* Corrigido: adicionado .form-depoimento */
+.form-depoimento .form-group { 
     margin-bottom: 15px;
     max-width: 400px;
     margin-left: auto;
@@ -348,8 +309,27 @@ h2 {
 
 /* Contato */
 .contato a {
-    color: none; /* 'none' não é um valor CSS válido para color. Mantenha 'inherit' ou defina uma cor. */
+    color: inherit; /* Corrigido para um valor válido */
     font-weight: 600;
+}
+
+/* --- ESTILO ESPECÍFICO PARA LINKS NA SEÇÃO CONTATO --- */
+
+/* Estilo para todos os links na seção contato, se necessário, mas vamos focar no Instagram */
+.contato a {
+    font-weight: 600;
+}
+
+/* NOVO: Estiliza o link do Instagram com a cor azul */
+.contato .link-instagram {
+    color: #007bff; /* Azul padrão, você pode usar o azul do Instagram se quiser */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contato .link-instagram:hover {
+    color: #0056b3; /* Um tom de azul mais escuro no hover */
+    text-decoration: underline;
 }
 
 /* Footer */
@@ -390,12 +370,11 @@ footer {
     /* --- AJUSTES GERAIS --- */
     
     body {
-        /* Reduz o padding superior para ajustar o header */
         padding-top: 150px; 
     }
     
     section {
-        padding: 30px 15px; /* Reduz o padding lateral em telas pequenas */
+        padding: 30px 15px; 
     }
 
     h2 {
@@ -405,11 +384,9 @@ footer {
     /* --- CABEÇALHO (HEADER) --- */
 
     header {
-        padding: 15px 5%; /* Padding reduzido no estado inicial */
+        padding: 15px 5%; 
     }
 
-    /* Esconde a navegação no estado não rolado para dar foco à logo, 
-       assumindo que você terá um menu hambúrguer com JS */
     nav {
         display: none; 
     }
@@ -423,15 +400,14 @@ footer {
         width: 60px; 
     }
     
-    /* No estado shrink (rolado), a navegação é visível (se for um menu de ícone) */
     header.shrink nav {
-        display: block; /* Se houver um ícone de menu */
+        display: block; 
     }
     
     /* --- SERVIÇOS (Cards) --- */
     
     .cards {
-        grid-template-columns: 1fr; /* Coloca todos os cards em coluna única */
+        grid-template-columns: 1fr; 
     }
 
 
@@ -445,13 +421,11 @@ footer {
         white-space: nowrap; 
     }
 
-    /* Slide agora mostra apenas um depoimento na tela */
     .carrossel-slide {
         width: 100%; 
         display: inline-block; 
         white-space: normal; 
         
-        /* Layout interno: Depoimentos empilhados, um abaixo do outro */
         display: flex;
         flex-direction: column; 
         align-items: center;
@@ -459,22 +433,14 @@ footer {
     }
     
     .depoimento-item {
-        /* Cada item ocupa a maior parte da largura do slide */
         width: 90%; 
         max-width: 90%; 
         min-height: 250px; 
-        margin: 10px auto; /* Centraliza verticalmente o item dentro do slide (se necessário) */
+        margin: 10px auto; 
         padding: 15px;
     }
-
-    /* --- NAVEGAÇÃO DO CARROSSEL --- */
     
-    .prev-btn, .next-btn {
-        left: 5px; 
-        right: 5px; 
-        padding: 6px 10px; 
-        font-size: 1rem;
-    }
+    /* OBS: As regras .prev-btn e .next-btn foram removidas daqui */
 
     /* --- FORMULÁRIO --- */
     
@@ -483,7 +449,6 @@ footer {
         margin: 20px 10px;
     }
     
-    /* Garante que os campos usem toda a largura disponível no celular */
     .form-depoimento, 
     .form-depoimento .form-group,
     .form-depoimento button[type="submit"] {
