@@ -1,6 +1,6 @@
 /* Reset */
 * {
-  margin: 1.5;
+  margin: 0; /* Alterado de 1.5 para 0, pois 1.5 não é uma unidade de margin válida */
   padding: 0;
   box-sizing: border-box; 
 }
@@ -12,9 +12,7 @@ body {
   color: #333;
   line-height: 1.6;
 
-  /* AJUSTE PARA NÃO COBRIR O CONTEÚDO: 
-     Definimos um valor alto (ex: 200px) para garantir que a Hero Section comece abaixo do cabeçalho grande. 
-     Ajuste este valor se a altura do seu cabeçalho inicial for diferente. */
+  /* Ajuste para garantir que a Hero Section comece abaixo do cabeçalho grande. */
   padding-top: 200px; 
 }
 
@@ -235,20 +233,20 @@ h2 {
     display: block;
 }
 
-/* --- Botões de Navegação (Item 1: Seta Mais Clean) --- */
+/* --- Botões de Navegação (Seta Mais Clean) --- */
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9); /* Fundo branco/transparente */
-    color: #c69f86; /* Cor da paleta (mais clean que o branco puro) */
+    background: rgba(255, 255, 255, 0.9); 
+    color: #c69f86; 
     border: 1px solid #c69f86;
     padding: 8px 12px;
     cursor: pointer;
     z-index: 10;
-    border-radius: 50%; /* Círculo */
+    border-radius: 50%; 
     font-size: 1.2rem;
-    line-height: 1; /* Alinha o ícone */
+    line-height: 1; 
     transition: background 0.3s, color 0.3s;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -258,7 +256,6 @@ h2 {
     color: white;
 }
 
-/* Ajuste o posicionamento para que a seta fique mais próxima da borda (ou onde desejar) */
 .prev-btn {
     left: 20px;
 }
@@ -273,11 +270,9 @@ h2 {
     margin-top: 20px;
 }
 
-.dot {
-    /* (Mantenha o estilo dos pontinhos do passo anterior aqui) */
-}
+/* Estilo do dot (ponto) omitido, assumindo que você já o tenha */
 
-/* --- Botão "Deixar um Recado" (Item 2: Centralizar) --- */
+/* --- Botão "Deixar um Recado" (Centralizar) --- */
 .feedback-btn-container {
     text-align: center; /* Centraliza o botão */
     margin-top: 30px;
@@ -286,7 +281,6 @@ h2 {
 
 /* Estilo do botão - Use a classe de seu botão primário */
 .btn-primario { 
-    /* Estilo do botão principal (ajuste as cores para o tema do seu site) */
     padding: 12px 30px;
     background-color: #c69f86; 
     color: white;
@@ -303,7 +297,7 @@ h2 {
 }
 
 
-/* --- Estilos do Formulário (Item 2: Ocultar) --- */
+/* --- Estilos do Formulário (Ocultar e Centralizar) --- */
 .novo-depoimento {
     max-width: 600px;
     margin: 40px auto;
@@ -321,57 +315,51 @@ h2 {
     transition: opacity 0.5s ease;
 }
 
-.novo-depoimento:not(.hidden) {
-    display: block;
-    opacity: 1;
-}
-
 .form-depoimento {
-    
     display: inline-block;
     text-align: left;
     width: 100%;
     max-width: 400px;
 }
 
-.form-depoimento.form-group {
+.form-depoimento .form-group { /* Corrigido: adicionado .form-depoimento */
     margin-bottom: 15px;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
 }
+
 .form-depoimento input[type="text"], 
 .form-depoimento textarea {
-    width: 100%; /* Ocupa a largura total do seu pai (.form-group) */
+    width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    box-sizing: border-box; 
 }
 
 .form-depoimento button[type="submit"] {
-    width: 100%; /* Faz o botão de submissão ocupar a largura total do formulário */
-    max-width: 400px; /* Alinha com a largura dos campos */
-    margin: 10px auto; /* Centraliza o botão */
-    display: block; /* Garante que o margin: auto funcione para centralizar */
+    width: 100%; 
+    max-width: 400px; 
+    margin: 10px auto; 
+    display: block; 
 }
 
-/* ... (Outros estilos de formulário mantidos) ... */   o
 /* Contato */
 .contato a {
-  color: none;
-  font-weight: 600;
+    color: none; /* 'none' não é um valor CSS válido para color. Mantenha 'inherit' ou defina uma cor. */
+    font-weight: 600;
 }
 
 /* Footer */
 footer {
-  background: #fff;
-  padding: 15px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #777;
-  margin-top: 40px;
+    background: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 40px;
 }
 
 /* --- Estilização dos Links de Serviço (Saber Mais) --- */
@@ -394,3 +382,112 @@ footer {
     border-color: #9c8060;
 }
 
+/* =============================================== */
+/* --- MEDIA QUERIES (RESPONSIVIDADE MOBILE) --- */
+/* =============================================== */
+
+@media (max-width: 768px) {
+    /* --- AJUSTES GERAIS --- */
+    
+    body {
+        /* Reduz o padding superior para ajustar o header */
+        padding-top: 150px; 
+    }
+    
+    section {
+        padding: 30px 15px; /* Reduz o padding lateral em telas pequenas */
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    /* --- CABEÇALHO (HEADER) --- */
+
+    header {
+        padding: 15px 5%; /* Padding reduzido no estado inicial */
+    }
+
+    /* Esconde a navegação no estado não rolado para dar foco à logo, 
+       assumindo que você terá um menu hambúrguer com JS */
+    nav {
+        display: none; 
+    }
+    
+    header.shrink {
+        height: 60px; 
+        padding: 5px 5%;
+    }
+
+    header.shrink .logo {
+        width: 60px; 
+    }
+    
+    /* No estado shrink (rolado), a navegação é visível (se for um menu de ícone) */
+    header.shrink nav {
+        display: block; /* Se houver um ícone de menu */
+    }
+    
+    /* --- SERVIÇOS (Cards) --- */
+    
+    .cards {
+        grid-template-columns: 1fr; /* Coloca todos os cards em coluna única */
+    }
+
+
+    /* --- CARROSSEL DE DEPOIMENTOS --- */
+    
+    .depoimento-visualizacao {
+        overflow: hidden; 
+    }
+    
+    .depoimentos-carrossel {
+        white-space: nowrap; 
+    }
+
+    /* Slide agora mostra apenas um depoimento na tela */
+    .carrossel-slide {
+        width: 100%; 
+        display: inline-block; 
+        white-space: normal; 
+        
+        /* Layout interno: Depoimentos empilhados, um abaixo do outro */
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        gap: 20px; 
+    }
+    
+    .depoimento-item {
+        /* Cada item ocupa a maior parte da largura do slide */
+        width: 90%; 
+        max-width: 90%; 
+        min-height: 250px; 
+        margin: 10px auto; /* Centraliza verticalmente o item dentro do slide (se necessário) */
+        padding: 15px;
+    }
+
+    /* --- NAVEGAÇÃO DO CARROSSEL --- */
+    
+    .prev-btn, .next-btn {
+        left: 5px; 
+        right: 5px; 
+        padding: 6px 10px; 
+        font-size: 1rem;
+    }
+
+    /* --- FORMULÁRIO --- */
+    
+    .novo-depoimento {
+        padding: 15px;
+        margin: 20px 10px;
+    }
+    
+    /* Garante que os campos usem toda a largura disponível no celular */
+    .form-depoimento, 
+    .form-depoimento .form-group,
+    .form-depoimento button[type="submit"] {
+        max-width: 100%;
+        width: 100%;
+    }
+}
