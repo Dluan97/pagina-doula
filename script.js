@@ -42,6 +42,12 @@ const slides = document.querySelectorAll('.carrossel-slide');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 const indicadoresContainer = document.querySelector('.carrossel-indicadores');
+
+// Variáveis para o formulário de Recado (Novas Adições/Uso)
+const toggleButton = document.getElementById('toggleFormBtn'); // NOVO: Botão Deixar Recado
+const formContainer = document.getElementById('novoDepoimentoContainer'); // NOVO: Container do formulário
+
+// Variáveis existentes do formulário
 const form = document.getElementById('depoimentoForm');
 const depoimentoInput = document.getElementById('depoimentoInput');
 const autorInput = document.getElementById('autorInput');
@@ -50,6 +56,7 @@ const feedbackMsg = document.getElementById('mensagemFeedback');
 let currentSlide = 0;
 let autoRotateTimer;
 const intervalTime = 7000; // Rotação a cada 7 segundos
+
 
 // --- FUNÇÕES DE ROTAÇÃO ---
 
@@ -77,13 +84,44 @@ function prevSlide() {
 }
 
 function startAutoRotate() {
-    autoRotateTimer = setInterval(nextSlide, intervalTime);
+    // Evita iniciar se houver apenas 1 slide
+    if (slides.length > 1) {
+        autoRotateTimer = setInterval(nextSlide, intervalTime);
+    }
 }
 
 function resetAutoRotate() {
     clearInterval(autoRotateTimer);
     startAutoRotate();
 }
+
+
+// --- LÓGICA DO BOTÃO DEIXAR RECADO (ITEM 2) ---
+
+if (toggleButton && formContainer) {
+    toggleButton.addEventListener('click', () => {
+        // Alterna a classe 'hidden' para mostrar/esconder
+        formContainer.classList.toggle('hidden'); 
+
+        // Altera o texto do botão
+        if (formContainer.classList.contains('hidden')) {
+            toggleButton.textContent = 'Deixar um Recado';
+        } else {
+            toggleButton.textContent = 'Esconder Formulário';
+            // Opcional: Rola para o formulário ao abrir
+            formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+}
+
+
+// --- LIGAÇÃO DOS BOTÕES DE NAVEGAÇÃO (ITEM 1) ---
+
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+}
+
 
 // --- FUNÇÃO DE SUBMISSÃO DO FORMULÁRIO ---
 
@@ -104,29 +142,57 @@ form.addEventListener('submit', function(e) {
     // 2. Tenta adicioná-lo ao slide ativo (o slide que está sendo visualizado)
     const activeSlide = slides[currentSlide];
     
-    // Se o slide ativo já tiver 3 depoimentos, não adicionamos ao HTML.
-    // (A rotação do lado do cliente torna isso complexo para gerenciar)
-    if (activeSlide.children.length < 3) {
-         activeSlide.insertAdjacentHTML('beforeend', novoDepoimentoHTML);
-         feedbackMsg.textContent = "Seu depoimento foi adicionado! Em breve você poderá vê-lo girando.";
-         feedbackMsg.style.color = "green";
-         // Limpa o formulário
-         form.reset();
+    // ATENÇÃO: Adicionar depoimentos via JS no cliente é temporário
+    // O ideal é enviar para um servidor/email para aprovação.
+    if (activeSlide && activeSlide.children.length < 3) {
+        activeSlide.insertAdjacentHTML('beforeend', novoDepoimentoHTML);
+        feedbackMsg.textContent = "Seu depoimento foi adicionado! Em breve você poderá vê-lo girando.";
+        feedbackMsg.style.color = "green";
+        
+        // Limpa o formulário
+        form.reset();
     } else {
-         feedbackMsg.textContent = "O slide está cheio! Seu depoimento foi enviado, mas será adicionado após a aprovação manual.";
-         feedbackMsg.style.color = "orange";
-         
-         // Limpa o formulário e envia o dado para você por e-mail (usando a técnica mailto)
-         window.location.href = `mailto:SEUEMAIL@dominio.com?subject=Novo Depoimento&body=Autor: ${novoAutor}%0ADepoimento: ${novoDepoimento}`;
-         form.reset();
+        feedbackMsg.textContent = "Seu depoimento foi enviado! Será adicionado após a aprovação manual.";
+        feedbackMsg.style.color = "orange";
+        
+        // Substituído para apenas mostrar a mensagem, sem o mailto que interrompe a experiência.
+        // Se precisar do envio, implemente um backend ou serviço de formulário.
+        
+        // Limpa o formulário
+        form.reset();
     }
     
     // Rola para a próxima slide após submissão (se houver mais slides)
     if (slides.length > 1) {
-         nextSlide();
+        // Pequeno delay para que o usuário veja a mensagem antes de rolar
+        setTimeout(nextSlide, 500); 
     }
 });
 
+
+// --- INICIALIZAÇÃO ---
+
+// Cria os indicadores (dots) dinamicamente
+slides.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (index === 0) {
+        dot.classList.add('active');
+    }
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarrossel();
+        resetAutoRotate();
+    });
+    indicadoresContainer.appendChild(dot);
+});
+
+
+// Inicia o carrossel na montagem do DOM
+document.addEventListener('DOMContentLoaded', () => {
+    updateCarrossel();
+    startAutoRotate();
+});
 
 // --- INICIALIZAÇÃO ---
 

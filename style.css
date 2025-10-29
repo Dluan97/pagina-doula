@@ -114,7 +114,7 @@ nav a:hover {
 
 .btn-whatsapp {
   display: inline-block;
-  background-color: #797979;
+  background-color: #c69f86;
   color: white;
   padding: 12px 25px;
   border-radius: 25px;
@@ -124,7 +124,7 @@ nav a:hover {
 }
 
 .btn-whatsapp:hover {
-  background-color: #4f4f4f;
+  background-color: #703d1de5;
 }
 
 /* --- SEÇÕES --- */
@@ -187,8 +187,8 @@ h2 {
 
 /* Container principal de visualização (limita a largura do carrossel) */
 .depoimento-visualizacao {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: 10px auto;
     overflow: hidden; /* CRUCIAL: Esconde slides que estão fora da tela */
     position: relative; /* Para posicionar botões e slides */
 }
@@ -235,27 +235,36 @@ h2 {
     display: block;
 }
 
-/* --- Botões de Navegação --- */
+/* --- Botões de Navegação (Item 1: Seta Mais Clean) --- */
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(198, 159, 134, 0.7); /* Cor da paleta com transparência */
-    color: white;
-    border: none;
-    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.9); /* Fundo branco/transparente */
+    color: #c69f86; /* Cor da paleta (mais clean que o branco puro) */
+    border: 1px solid #c69f86;
+    padding: 8px 12px;
     cursor: pointer;
     z-index: 10;
-    border-radius: 50%;
+    border-radius: 50%; /* Círculo */
     font-size: 1.2rem;
+    line-height: 1; /* Alinha o ícone */
+    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.prev-btn:hover, .next-btn:hover {
+    background: #c69f86;
+    color: white;
+}
+
+/* Ajuste o posicionamento para que a seta fique mais próxima da borda (ou onde desejar) */
 .prev-btn {
-    left: 10px;
+    left: 20px;
 }
 
 .next-btn {
-    right: 10px;
+    right: 20px;
 }
 
 /* --- Indicadores --- */
@@ -268,37 +277,87 @@ h2 {
     /* (Mantenha o estilo dos pontinhos do passo anterior aqui) */
 }
 
-/* --- Estilos do Formulário (Entrada de Mensagem) --- */
+/* --- Botão "Deixar um Recado" (Item 2: Centralizar) --- */
+.feedback-btn-container {
+    text-align: center; /* Centraliza o botão */
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Estilo do botão - Use a classe de seu botão primário */
+.btn-primario { 
+    /* Estilo do botão principal (ajuste as cores para o tema do seu site) */
+    padding: 12px 30px;
+    background-color: #c69f86; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primario:hover {
+    background-color: #a3816c; /* Cor mais escura no hover */
+}
+
+
+/* --- Estilos do Formulário (Item 2: Ocultar) --- */
 .novo-depoimento {
-    padding: 40px 20px 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
     border-top: 1px solid #eee;
-    margin-top: 40px;
+    margin-top: 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Classe para ocultar/mostrar o formulário */
+.hidden {
+    display: none !important;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.novo-depoimento:not(.hidden) {
+    display: block;
+    opacity: 1;
 }
 
 .form-depoimento {
-    max-width: 600px;
-    margin: 20px auto 0;
+    
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-depoimento.form-group {
+    margin-bottom: 15px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: left;
 }
-
-.form-depoimento .form-group {
-    margin-bottom: 15px;
-}
-
-.form-depoimento input, 
+.form-depoimento input[type="text"], 
 .form-depoimento textarea {
-    width: 100%;
+    width: 100%; /* Ocupa a largura total do seu pai (.form-group) */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
 }
 
-.alerta-envio {
-    font-size: 0.9rem;
-    color: #a8a8a8;
-    margin-top: 10px;
+.form-depoimento button[type="submit"] {
+    width: 100%; /* Faz o botão de submissão ocupar a largura total do formulário */
+    max-width: 400px; /* Alinha com a largura dos campos */
+    margin: 10px auto; /* Centraliza o botão */
+    display: block; /* Garante que o margin: auto funcione para centralizar */
 }
+
+/* ... (Outros estilos de formulário mantidos) ... */   o
 /* Contato */
 .contato a {
   color: none;

@@ -69,14 +69,13 @@
       </div>
     </section>
 
-    <!-- Depoimentos -->
 <section id="depoimentos" class="depoimentos">
-    <h2>Experiências Reais</h2>
+    <h2>Depoimentos</h2>
     
     <div class="depoimento-visualizacao">
         
         <div class="depoimentos-carrossel">
-            
+    
             <div class="carrossel-slide active"> 
                 <div class="depoimento-item">
                     <blockquote>
@@ -105,30 +104,40 @@
                     </blockquote>
                     <p class="autor">— Juliana B.</p>
                 </div>
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
+            </div>
+            
+            <button class="prev-btn" onclick="plusSlides(-1)">
+                <i class="fas fa-chevron-left"></i> 
+            </button>
+            <button class="next-btn" onclick="plusSlides(1)">
+                <i class="fas fa-chevron-right"></i> 
+            </button>
             
         </div>
         
         <div class="carrossel-indicadores">
-            <span class="dot active"></span>
-            <span class="dot"></span>
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
         </div>
         
     </div>
     
-    <div class="novo-depoimento">
+    <div class="feedback-btn-container">
+        <button id="toggleFormBtn" class="btn-primario">Deixar um Recado</button>
+    </div>
+
+    <div class="novo-depoimento hidden" id="novoDepoimentoContainer">
         <h2>Deixe sua Mensagem</h2>
         <p>Gostaria de compartilhar sua experiência? Preencha o formulário abaixo.</p>
 
         <form id="depoimentoForm" class="form-depoimento">
             <div class="form-group">
-                <label for="autorInput">Seu Nome:</label>
-                <input type="text" id="autorInput" required>
+                
+                <input type="text" id="autorInput" required placeholder="Seu Nome:">
             </div>
             <div class="form-group">
-                <label for="depoimentoInput">Seu Depoimento (Texto):</label>
-                <textarea id="depoimentoInput" rows="4" required></textarea>
+                
+                <textarea id="depoimentoInput" rows="4" required placeholder="..."></textarea>
             </div>
             <button type="submit" class="btn-primario">Enviar e Visualizar</button>
             <p id="mensagemFeedback" class="alerta-envio"></p>
