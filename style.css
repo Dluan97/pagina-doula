@@ -309,7 +309,7 @@ h2 {
 
 /* Contato */
 .contato a {
-    color: inherit; /* Corrigido para um valor válido */
+    color: auto; /* Corrigido para um valor válido */
     font-weight: 600;
 }
 
@@ -456,3 +456,4 @@ footer {
         width: 100%;
     }
 }
+
